@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Swagger Trivia</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/circle-progress.js"></script>
+    <script src="/js/circle-timer.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div id="load"></div>
+    <div id="time"></div>
+    <script>
+      var seconds = 30;
+
+      //set the size of the timer in px;
+      var timerSize = 100;
+
+      var x = setInterval(function() {
+        seconds--;
+        if (seconds < 0) {
+          clearInterval(x);
+          seconds = 30;
+        }
+      }, 1000);
+      circle_timer = new CircleTimer({
+        target: "#time",
+        duration: 30,
+        id: "circle",
+        tick: "./sounds/tick.wav",
+        buzz: "./sounds/buzz.wav",
+        onFinished: function() {
+          console.log("timer finished!");
+          }
+        }, {
+        fill: { color: "#1669a4" },
+        animation: false,
+        thickness: 10,
+        size: timerSize || 100
+      });
+      circle_timer.start();
+      setTimeout(function(){$("#load").fadeOut(1000);},750);
+      $("#circle").css({"margin-left": ($(document).outerWidth() /2 - timerSize/2), "margin-top": ($(document).outerHeight() /2 - timerSize/2), "position": "absolute"});
+    </script>
+  </body>
+</html>
