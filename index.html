@@ -12,10 +12,10 @@
     <div id="load"></div>
     <div id="time"></div>
     <script>
-      var seconds = 30;
+      var seconds = 30; //somewhat optional
 
       //set the size of the timer in px;
-      var timerSize = 100;
+      var timerSize = 100; //optional
 
       var x = setInterval(function() {
         seconds--;
@@ -26,10 +26,10 @@
       }, 1000);
       circle_timer = new CircleTimer({
         target: "#time",
-        duration: 30,
-        id: "circle",
-        tick: "./sounds/tick.wav",
-        buzz: "./sounds/buzz.wav",
+        duration: seconds || 30,
+        id: "circle", //optional
+        tick: "./sounds/tick.wav", //optional
+        buzz: "./sounds/buzz.wav", //optional
         onFinished: function() {
           console.log("timer finished!");
           }
